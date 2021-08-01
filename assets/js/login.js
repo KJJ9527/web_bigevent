@@ -58,18 +58,18 @@ $(function() {
     e.preventDefault();
     // 发起ajax的post请求
     let data = {username: $('#form_reg [name=username]').val(),password: $('#form_reg [name=password]').val()}
-    $.post('http://api-breakingnews-web.itheima.net/api/reguser',data,function(res) {
+    $.post('/api/reguser',data,function(res) {
       if(res.status !== 0) {
         return layer.msg(res.message, {
           icon: 2,
-          time: 2000 //2秒关闭（如果不配置，默认是3秒）
+          time: 1000 //1秒关闭（如果不配置，默认是3秒）
         }, function(){
           //do something
         });
       }
       layer.msg(res.message, {
         icon: 1,
-        time: 2000 //2秒关闭（如果不配置，默认是3秒）
+        time: 1000 //1秒关闭（如果不配置，默认是3秒）
       }, function(){
         // 模拟人的点击行为
         $('#link_login').click()
@@ -82,24 +82,24 @@ $(function() {
     let data = $('#form_login').serialize()
     // 阻止表单的默认提交行为
     e.preventDefault();
-    $.post('http://api-breakingnews-web.itheima.net/api/login',data,function(res) {
+    $.post('/api/login',data,function(res) {
       if(res.status !== 0) {
         return layer.msg(res.message,{
           icon:3,
-          time:2000 //2秒关闭（如果不配置，默认是3秒）
+          time:1000 //1秒关闭（如果不配置，默认是3秒）
         },function() {
           // do something
         });
       }
       layer.msg(res.message, {
         icon:1,
-        time:2000 //2秒关闭（如果不配置，默认是3秒）
+        time:1000 //1秒关闭（如果不配置，默认是3秒）
       },function() {
         // console.log(res.token);
         // 将登录成功得到的 token 字符串,保存到 localStorage 中
         localStorage.setItem('token',res.token)
         console.log(localStorage);
-        location.href = '/index.html'
+        location.href = '/code/index.html'
       })
     })
   })
